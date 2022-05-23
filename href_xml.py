@@ -1,6 +1,6 @@
 #/usr/bin/python3
 
-# stackabuse/parsing-xml-with-beautifulsoup-in-python/
+# http://stackabuse/parsing-xml-with-beautifulsoup-in-python/
 
 import requests
 from bs4 import BeautifulSoup
