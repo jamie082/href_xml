@@ -19,9 +19,6 @@ for h, item in soup.find_all('li'):
     location_obj = item.find('result-hood').text
     time_obj = item.find('datetime').text
 
-    #print(h.get('href'))
-
-    #h = soup.find('href').text
     a = h.find('a')
     urls.append(a.attrs['href'])
 
