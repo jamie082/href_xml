@@ -12,9 +12,12 @@ soup = BeautifulSoup(req.text, 'html.parser')
 
 # create DataFrame
 
-df = pd.DataFrame(columns=['Description', 'Location', 'Time']) # create columns
+df = pd.DataFrame(columns=['href', 'result-hood', 'datetime']) # create columns
 
-for h, item in soup.find_all('li'):
+this_var = soup.find_all('li')
+#h = soup.find('href').text
+#for h, item in soup.find_all('li'):
+for index, item in enumerate(this_var):
     href_output = item.find('href').text
     location_obj = item.find('result-hood').text
     time_obj = item.find('datetime').text
