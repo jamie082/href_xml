@@ -12,13 +12,12 @@ soup = BeautifulSoup(req.text, 'html.parser')
 
 # create DataFrame
 
-df = pd.DataFrame(columns=['Description', 'Location', 'Time'])
+df = pd.DataFrame(columns=['Description', 'Location', 'Time'] # create columns
 
-urls = []
 for h, item in soup.find_all('li'):
-    href_output = item.find('href')
-    location = item.find('result-hood')
-    time_of = item.find('datetime')
+    href_output = item.find('href').text
+    location_obj = item.find('result-hood').text
+    time_obj = item.find('datetime').text
 
     #print(h.get('href'))
 
@@ -28,9 +27,14 @@ for h, item in soup.find_all('li'):
 
     row = {
         'columns': href_output,
+        'href', location_obj,
+        'time', time_obj
     }
 
     df = df.append(href_output, ignore_index=True)
     print(f'Appending row %s of %s' % (index+1, items_length))
 
 print(df)
+
+
+# output a href list into Description, Location and Time columns (html.parser)
