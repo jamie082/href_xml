@@ -12,7 +12,7 @@ soup = BeautifulSoup(req.text, 'html.parser')
 
 # create DataFrame
 
-df = pd.DataFrame(columns=['Description', 'Location', 'Time'] # create columns
+df = pd.DataFrame(columns=['Description', 'Location', 'Time']) # create columns
 
 for h, item in soup.find_all('li'):
     href_output = item.find('href').text
@@ -27,8 +27,8 @@ for h, item in soup.find_all('li'):
 
     row = {
         'columns': href_output,
-        'href', location_obj,
-        'time', time_obj
+        'href': location_obj,
+        'time': time_obj
     }
 
     df = df.append(href_output, ignore_index=True)
