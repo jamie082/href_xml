@@ -15,7 +15,7 @@ soup = BeautifulSoup(req.text, 'html.parser')
 df = pd.DataFrame(columns=['Description', 'Location', 'Time'])
 
 urls = []
-for h in soup.find_all('a'):
+for h in soup.find_all('li'):
     #print(h.get('href'))
 
     #h = soup.find('href').text
