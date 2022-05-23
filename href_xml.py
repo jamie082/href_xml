@@ -16,6 +16,10 @@ df = pd.DataFrame(columns=['Description', 'Location', 'Time'])
 
 urls = []
 for h in soup.find_all('li'):
+    href_output = item.find('href')
+    location = item.find('result-hood')
+    time_of = item.find('datetime')
+
     #print(h.get('href'))
 
     #h = soup.find('href').text
