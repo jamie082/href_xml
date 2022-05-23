@@ -12,17 +12,19 @@ soup = BeautifulSoup(req.text, 'html.parser')
 
 # create DataFrame
 
-df = pd.DataFrame(columns['Description'])
+df = pd.DataFrame(columns=['Description', 'Location', 'Time'])
 
 urls = []
 for h in soup.find_all('a'):
-    print(h.get('href'))
+    # print(h.get('href'))
+
+    h = soup.find('href').text
 
     row = {
-        'columns': h,
+        'columns': href_output,
     }
 
-    df = df.append(row, ignore_index=True)
+    df = df.append(href_output, ignore_index=True)
     print(f'Appending row %s of %s' % (index+1, items_length))
 
 print(df)
