@@ -16,9 +16,11 @@ df = pd.DataFrame(columns=['Description', 'Location', 'Time'])
 
 urls = []
 for h in soup.find_all('a'):
-    # print(h.get('href'))
+    #print(h.get('href'))
 
-    h = soup.find('href').text
+    #h = soup.find('href').text
+    a = h.find('a')
+    urls.append(a.attrs['href'])
 
     row = {
         'columns': href_output,
