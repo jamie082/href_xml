@@ -17,10 +17,11 @@ df = pd.DataFrame(columns=['href', 'result-hood', 'datetime']) # create columns
 this_var = soup.find_all('li')
 #h = soup.find('href').text
 #for h, item in soup.find_all('li'):
-for index, item in enumerate(this_var):
-    href_output = item.find('href').text
-    location_obj = item.find('result-hood').text
-    time_obj = item.find('datetime').text
+#
+for h, item in soup.find_all('data-pid'): # create element ordered list
+    href_output = item.find('href')
+    location_obj = item.find('result-hood')
+    time_obj = item.find('datetime')
 
     a = h.find('a')
     urls.append(a.attrs['href'])
