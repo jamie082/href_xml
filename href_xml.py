@@ -1,6 +1,7 @@
 #/usr/bin/python3
 
 # http://stackabuse/parsing-xml-with-beautifulsoup-in-python/
+# https://www.geeksforgeeks.org/beautifulsoup-find-all-li-in-ul/
 
 import requests
 from bs4 import BeautifulSoup
@@ -14,17 +15,13 @@ soup = BeautifulSoup(req.text, 'html.parser')
 
 df = pd.DataFrame(columns=['href', 'result-hood', 'datetime']) # create columns
 
-this_var = soup.find_all('li')
-#h = soup.find('href').text
-#for h, item in soup.find_all('li'):
-#
-for h, item in soup.find_all("result-row"): # create element ordered list
+
+for item in soup.find_all("li"): # create element ordered list
     href_output = item.find('href')
     location_obj = item.find('result-hood')
     time_obj = item.find('datetime')
 
-    a = h.find('a')
-    urls.append(a.attrs['href'])
+    urls = []
 
     row = {
         'columns': href_output,
@@ -32,8 +29,7 @@ for h, item in soup.find_all("result-row"): # create element ordered list
         'time': time_obj
     }
 
-    df = df.append(href_output, ignore_index=True)
-    print(f'Appending row %s of %s' % (index+1, items_length))
+    df = pd.DataFrame(row)
 
 print(df)
 
