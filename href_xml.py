@@ -18,7 +18,7 @@ this_var = soup.find_all('li')
 #h = soup.find('href').text
 #for h, item in soup.find_all('li'):
 #
-for h, item in soup.find_all('data-pid'): # create element ordered list
+for h, item in soup.find_all("result-row"): # create element ordered list
     href_output = item.find('href')
     location_obj = item.find('result-hood')
     time_obj = item.find('datetime')
