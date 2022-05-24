@@ -13,23 +13,22 @@ soup = BeautifulSoup(req.text, 'html.parser')
 
 # create DataFrame
 
-df = pd.DataFrame(columns=['href', 'result-hood', 'datetime']) # create columns
-
+df = pd.DataFrame(columns=['result-hood', 'datetime']) # create columns
 
 for item in soup.find_all("li"): # create element ordered list
-    href_output = item.find('href')
+    #href_output = item.find('href').text
     location_obj = item.find('result-hood')
     time_obj = item.find('datetime')
 
     urls = []
 
     row = {
-        'columns': href_output,
+        #'columns': href_output,
         'href': location_obj,
         'time': time_obj
     }
 
-    df = pd.DataFrame(row)
+    df = pd.DataFrame(row, index=[0])
 
 print(df)
 
