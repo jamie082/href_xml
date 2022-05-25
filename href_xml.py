@@ -8,16 +8,19 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-url = 'http://sandiego.craigslist.org/search/sof'
-webpage =  requests.get(url)
-soup = BeautifulSoup(webpage.content)
+my_site = 'http://sandiego.craigslist.org/search/sof'
+
+website = requests.get(my_site)
+soup = BeautifulSoup(website.content, 'html.parser')
+
+data = requests.get(website)
 
 # create DataFrame
 
 df = pd.DataFrame(columns=['result-hood', 'datetime']) # create columns
 
-html = BeautifulSoup(webpage.text, 'html.parser')
-items = html.select('li')
+html = BeautifulSoup(data.text, 'html.parser')
+item = html.select('li')
 
 for item in items: # create element ordered list
     #href_output = item.find('href')
