@@ -8,15 +8,15 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 url = 'http://sandiego.craigslist.org/search/sof'
-req =  requests.get(url)
-soup = BeautifulSoup(req.text, 'html.parser')
+webpage =  requests.get(url)
+soup = BeautifulSoup(webpage.content)
 
 # create DataFrame
 
 df = pd.DataFrame(columns=['result-hood', 'datetime']) # create columns
 
-for item in soup.find_all("li"): # create element ordered list
-    #href_output = item.find('href').text
+for item in items: # create element ordered list
+    #href_output = item.find('href')
     location_obj = item.find('result-hood')
     time_obj = item.find('datetime')
 
@@ -28,7 +28,7 @@ for item in soup.find_all("li"): # create element ordered list
         'time': time_obj
     }
 
-    df = pd.DataFrame(row, index=[0])
+    df = pd.DataFrame(row, index=[0, 1, 2, 3])
 
 print(df)
 
