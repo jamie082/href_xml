@@ -2,6 +2,7 @@
 
 # http://stackabuse/parsing-xml-with-beautifulsoup-in-python/
 # https://www.geeksforgeeks.org/beautifulsoup-find-all-li-in-ul/
+# https://opensource.com/article/21/9/web-scraping-python-beautiful-soup
 
 import requests
 from bs4 import BeautifulSoup
@@ -15,10 +16,13 @@ soup = BeautifulSoup(webpage.content)
 
 df = pd.DataFrame(columns=['result-hood', 'datetime']) # create columns
 
+html = BeautifulSoup(webpage.text, 'html.parser')
+items = html.select('li')
+
 for item in items: # create element ordered list
     #href_output = item.find('href')
-    location_obj = item.find('result-hood')
-    time_obj = item.find('datetime')
+    location_obj = item.find('result-hood').text()
+    time_obj = item.find('datetime').text()
 
     urls = []
 
