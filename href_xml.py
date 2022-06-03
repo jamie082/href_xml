@@ -11,23 +11,22 @@ from pprint import pprint
 
 df = pd.DataFrame(columns=['result-hood', 'datetime']) # create columns
 
-
 my_site = 'http://sandiego.craigslist.org/search/sof'
 data = requests.get(my_site)
 
-html = BeautifulSoup(data.text, 'html.parser')
-items = html.select('li')
-
 my_data = [] # create my_data[] for dataFrame
+
+html = BeautifulSoup(data.text, 'html.parser')
+
+items = html.select('li')
 
 for item in items: # create element ordered list
     # new objectss
-    result_hood = item.select('result-hood')
-    item = item.select('datetime')
+    per_1 = item.select('a') # save a href links
 
-    my_data.append({"title": result_hood, "item": item})
+    my_data.append({"per_1": per_1}) # only one item, <a href links
 
-pprint(my_data)
+pprint(per_1)
 
 """
     row = {
