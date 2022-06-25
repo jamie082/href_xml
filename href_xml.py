@@ -18,26 +18,7 @@ my_data = [] # create my_data[] for dataFrame
 
 html = BeautifulSoup(data.text, 'html.parser')
 
-items = html.select('li')
+items = html.find('li') # look fora <li> main tag (defines a list element)
 
-for item in items: # create element ordered list
-    # new objectss
-    per_1 = item.select('a') # save a href links
-
-    my_data.append({"per_1": per_1}) # only one item, <a href links
-
-pprint(per_1)
-
-"""
-    row = {
-        #'columns': href_output,
-        'href': location_obj,
-        'time': time_obj
-    }
-
-    df = pd.DataFrame(row, index=[0, 1, 2, 3])
-
-print(df)
-
-"""
-# output a href list into Description, Location and Time columns (html.parser)
+for a in html.find_all("a"):
+    print(a.text)
