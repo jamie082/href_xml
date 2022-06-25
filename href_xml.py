@@ -16,9 +16,19 @@ my_data = [] # create my_data[] for dataFrame
 
 html = BeautifulSoup(data.text, 'html.parser')
 
-items = html.find('li') # look fora <li> main tag (defines a list element)
+items = html.find('ul') # look fora <li> main tag (defines a list element)
+
+# https://realpython.com/beautiful-soup-web-scraper-python/
+
+<div id="sortable-results">
+    <--all the job listings -->
+</div>
+
+results = html.find(id="sortable-resuls")
+
+job_elements = results.find_all("li")
 
 for job_element in job_elements:
-    element_select = job_element.find("a", class_="result-row")
-    print(element_select)
+    element_select = job_element.find("li", class_="result-row")
+    print(element_select.text.strip())
     print()
