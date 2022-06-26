@@ -16,9 +16,9 @@ html = BeautifulSoup(data.text, 'html.parser')
 
 # https://realpython.com/beautiful-soup-web-scraper-python/
 
-results = html.find(id="search-results")
+results = html.find(class_="rows")
 
-job_elements = results.find_all("div", class_="result-row")
+job_elements = results.find_all("div", class_="sortable-results")
 
 for job_element in job_elements:
     element_select = job_element.find("li", class_="result-row")
