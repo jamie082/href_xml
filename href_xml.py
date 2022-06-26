@@ -18,9 +18,9 @@ html = BeautifulSoup(data.text, 'html.parser')
 
 results = html.find(class_="rows")
 
-job_elements = results.find_all("div", class_="sortable-results")
+job_elements = results.find_all("li", class_="result-row")
 
 for job_element in job_elements:
-    element_select = job_element.find("li", class_="result-row")
-    print(element_select.text.strip())
+    element_select = job_element.find("a")
+    print(element_select)
     print()
