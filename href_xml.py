@@ -14,13 +14,11 @@ my_data = [] # create my_data[] for dataFrame
 
 html = BeautifulSoup(data.text, 'html.parser')
 
-items = html.find('ul') # look fora <li> main tag (defines a list element)
-
 # https://realpython.com/beautiful-soup-web-scraper-python/
 
-results = html.find(id="sortable-resuls")
+results = html.find(id="search-results")
 
-job_elements = results.find_all("div", class_="rows")
+job_elements = results.find_all("div", class_="result-row")
 
 for job_element in job_elements:
     element_select = job_element.find("li", class_="result-row")
